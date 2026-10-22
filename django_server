@@ -1,1 +1,15 @@
 [22/Oct/2026 08:35:49] "GET /djangoapp/get_cars HTTP/1.1" 200 2177
+[22/Oct/2026 08:37:02] "POST /djangoapp/register HTTP/1.1" 200 51
+[22/Oct/2026 08:37:12] "POST /djangoapp/login HTTP/1.1" 200 51
+[22/Oct/2026 08:37:25] "GET /djangoapp/logout HTTP/1.1" 200 16
+[22/Oct/2026 08:37:45] "GET /djangoapp/reviews/dealer/1 HTTP/1.1" 200 1125
+[22/Oct/2026 08:38:04] "GET /djangoapp/get_dealers HTTP/1.1" 200 9378
+[22/Oct/2026 08:38:36] "GET /djangoapp/dealer/1 HTTP/1.1" 200 235
+[22/Oct/2026 08:38:49] "GET /djangoapp/get_dealers/Kansas HTTP/1.1" 200 1327
+[22/Oct/2026 08:39:04] "GET /djangoapp/get_cars HTTP/1.1" 200 2177
+[22/Oct/2026 08:39:24] "GET /djangoapp/analyze/Fantastic%20services HTTP/1.1" 200 70
+[22/Oct/2026 08:39:36] "HEAD / HTTP/1.1" 200 0
+[22/Oct/2026 08:39:36] "HEAD /about HTTP/1.1" 200 0
+[22/Oct/2026 08:39:36] "HEAD /contact HTTP/1.1" 200 0
+[22/Oct/2026 08:39:46] "POST /djangoapp/add_review HTTP/1.1" 200 361
+[22/Oct/2026 08:40:04] "GET /djangoapp/reviews/dealer/1 HTTP/1.1" 200 1414
