@@ -1,0 +1,22 @@
+{
+  "esversion": 8,
+  "node": true,
+  "browser": true,
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "console": true,
+    "process": true,
+    "require": true,
+    "module": true,
+    "__dirname": true,
+    "exports": true,
+    "fetch": true,
+    "window": true,
+    "document": true,
+    "sessionStorage": true,
+    "localStorage": true,
+    "setTimeout": true,
+    "clearTimeout": true
+  }
+}

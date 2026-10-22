@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: best-cars-django-deployment
+  labels:
+    app: best-cars-dealership
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: best-cars-dealership
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: best-cars-dealership
+        tier: backend
+    spec:
+      containers:
+        - name: django-container
+          image: <YOUR_DOCKER_IMAGE_REGISTRY>/best-cars-django:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: DJANGO_DEBUG
+              value: "False"
+            - name: DJANGO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: django-secret
+                  key: secret-key
+            - name: BACKEND_URL
+              value: "http://dealership-database-service:3030"
+            - name: SENTIMENT_ANALYZER_URL
+              value: "http://sentiment-analyzer-service:5000"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /djangoapp/get_cars
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /djangoapp/get_cars
+              port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: best-cars-django-service
+  labels:
+    app: best-cars-dealership
+    tier: backend
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    app: best-cars-dealership
+    tier: backend

@@ -1,0 +1,11 @@
+[flake8]
+max-line-length = 100
+exclude =
+    .git,
+    __pycache__,
+    node_modules,
+    */migrations/*,
+    server/frontend/build/*,
+    server/frontend/node_modules/*,
+    server/database/node_modules/*
+ignore = E203, W503
